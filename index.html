@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+		<meta charset="utf-8">
+
+		<!-- Electron defs -->
+		<!-- <meta http-equiv="Content-Security-Policy"
+		content="
+			default-src 'self';
+			script-src 'self' 'unsafe-inline';
+			style-src 'self' 'unsafe-inline';
+			img-src 'self' data:;
+			font-src 'self';
+			object-src 'none';
+		"> -->
+
+		<link rel="icon" href="https://slowroads.io/favicon.svg">
+		<link rel="apple-touch-icon" href="apple-touch-icon.png">
+		<!-- <link rel="icon" href="./favicon_dark.svg" type="image/x-icon" media="(prefers-color-scheme: dark)"> -->
+		<!-- <link rel="icon" href="./favicon_light.svg" type="image/x-icon" media="(prefers-color-scheme: light)"> -->
+		<link rel="preload" href="/fonts/Sono.ttf" as="font" type="font/ttf" crossorigin="">
+		<link rel="preload" href="/fonts/Space.ttf" as="font" type="font/ttf" crossorigin="">
+
+		<link rel="manifest" href="/manifest.json">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+		<meta name="theme-color" content="#ffffff">
+		<meta name="title" content="Slow Roads">
+		<meta name="description" content="Endless driving zen">
+		<meta name="color-scheme" content="light only">
+
+		<!-- Open Graph / Facebook -->
+		<meta property="og:type" content="website">
+		<meta property="og:url" content="https://slowroads.io/">
+		<meta property="og:title" content="Slow Roads">
+		<meta property="og:description" content="Endless driving zen">
+		<meta property="og:image" content="/meta-autumn-02c.jpg">
+		<!-- <meta property="og:image" content="/meta-steam.jpg"> -->
+
+		<!-- Twitter -->
+		<meta property="twitter:card" content="summary_large_image">
+		<meta property="twitter:url" content="https://slowroads.io/">
+		<meta property="twitter:title" content="Slow Roads">
+		<meta property="twitter:description" content="Endless driving zen">
+		<meta property="twitter:image" content="/meta-autumn-02c.jpg">
+		<!-- <meta property="twitter:image" content="/meta-steam.jpg"> -->
+
+		<title> s l o w&nbsp;&nbsp;r o a d s</title>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			  if (window.location.hash) {
+				// Check if the URL contains a hash
+				const metas = document.querySelectorAll('meta[property^="og:"], meta[name^="twitter:"]');
+
+				// Remove or modify the necessary meta tags
+				metas.forEach(meta => {
+				  	meta.parentNode.removeChild(meta);
+				});
+			  }
+			});
+
+		</script>
+
+		<style>
+
+			:root {
+				--sr-white: #F4F2ED;
+
+				--sr-white-0: #F4F2ED00;
+				--sr-white-10: #F4F2ED20;
+				--sr-white-25: #F4F2ED40;
+				--sr-white-50: #F4F2ED80;
+				--sr-white-75: #F4F2EDC0;
+				--sr-white-90: #F4F2EDE0;
+
+				--sr-primary: #343c3e;
+				--sr-primary-0: #343c3e00;
+				--sr-primary-25: #343c3e40;
+				--sr-primary-50: #343c3e80;
+				--sr-primary-75: #343c3eC0;
+				--sr-primary-90: #343c3eEE;
+
+				--sr-secondary: #D2D1CD;
+				--sr-secondary-0: #D2D1CD00;
+				--sr-secondary-25: #D2D1CD40;
+				--sr-secondary-50: #D2D1CD80;
+				--sr-secondary-75: #D2D1CDC0;
+				--sr-secondary-90: #D2D1CDEE;
+
+				--sr-tertiary: #7e7c76;
+				--sr-tertiary-0: #7e7c7600;
+				--sr-tertiary-25: #7e7c7640;
+				--sr-tertiary-50: #7e7c7680;
+				--sr-tertiary-75: #7e7c76C0;
+				--sr-tertiary-90: #7e7c76EE;
+
+				--sr-warn: #ff992b;
+
+				--sr-dark: #444444;
+				--sr-darker: #333;
+				--sr-black: #23262c;
+
+				--sr-bg: #F4F2ED;
+				--sr-lowlight: #343c3e80;
+
+				color-scheme: light only;
+			}
+
+			@font-face {
+				font-family: Sono;
+				src: url(/fonts/Sono.ttf);
+				font-variant: slashed-zero;
+			}
+
+			@font-face {
+				font-family: Space;
+				src: url(/fonts/Space.ttf);
+				font-variant: slashed-zero;
+			}
+
+			/* width */
+			::-webkit-scrollbar {
+				width: 0.6rem;
+			}
+
+			/* Track */
+			::-webkit-scrollbar-track {
+				background: var(--sr-primary-25);
+			}
+
+			/* Handle */
+			::-webkit-scrollbar-thumb {
+				background: var(--sr-primary-50);
+			}
+
+			/* Handle on hover */
+			::-webkit-scrollbar-thumb:hover {
+				background: var(--sr-primary);
+			}
+
+			* {
+				margin: 0;
+				padding: 0;
+				scroll-behavior: smooth !important;
+				font-variant: slashed-zero;
+		    }
+
+			body {
+				overflow: hidden;
+				font-family: Space, Helvetica, sans-serif;
+			}
+
+			img {
+				-webkit-user-drag: none;
+				-khtml-user-drag: none;
+				-moz-user-drag: none;
+				-o-user-drag: none;
+				user-drag: none;
+			}
+
+			a {
+				text-decoration: none;
+			}
+
+			html {
+				position: fixed;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				font-size: 16px;
+			}
+
+			@media screen and (orientation: landscape) and (max-width: 1361px)  {
+				html {
+					font-size: 14px;
+				}
+			}
+
+			@media screen and (orientation: landscape) and (max-width: 1180px) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+			@media screen and (orientation: portrait) {
+				html {
+					font-size: 12px;
+				}
+			}
+
+
+
+		</style>
+
+		<script src="./alea.min.js"></script>
+
+		
+		<link rel="modulepreload" href="./_app/immutable/entry/start.4593a708.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.05185c5f.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.28a0dec0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.205d685d.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/control.c2cf8273.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.a7863966.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.2e86b85f.js">
+	<link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/nodes/0.545b03e2.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/layout.eb19d6ff.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/nodes/1.04400d9e.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/nodes/3.da2ad8c8.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/conifers.26f84295.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/SettingsManager.a31845d6.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/DevMidlineGenerator.7013ef99.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/HillsHeightmap.1d759caa.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/DriftmasMidlineGenerator.13fc1bad.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/tree_08.839552e8.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/IsStaticRoute.ed7acde0.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/index.d9998155.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/times.b1a5e42f.js"><link rel="modulepreload" as="script" crossorigin="" href="https://slowroads.io/_app/immutable/chunks/each.e59479a4.js"><link rel="stylesheet" href="https://slowroads.io/_app/immutable/assets/3.988f5726.css"><style>
+    @keyframes lgGlassSweep {
+      0% { transform: translateX(-140%) skewX(-24deg); opacity: 0; }
+      35% { opacity: 0.55; }
+      70% { opacity: 0.55; }
+      100% { transform: translateX(320%) skewX(-24deg); opacity: 0; }
+    }
+    @keyframes lgAmbientPulse {
+      0%, 100% { opacity: 0.45; transform: scale(0.98); }
+      50% { opacity: 0.85; transform: scale(1.03); }
+    }
+    #liquid-glass-zip-hud .lg-shell {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      width: 348px;
+      padding: 13px 18px 13px 14px;
+      border-radius: 999px;
+      /* Deep smoked refractive glass with subtle top-down light dispersion */
+      background:
+        radial-gradient(120% 140% at 15% 0%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.02) 55%, rgba(12, 14, 18, 0.45) 100%),
+        rgba(18, 20, 26, 0.68);
+      backdrop-filter: blur(36px) saturate(190%) contrast(106%);
+      -webkit-backdrop-filter: blur(36px) saturate(190%) contrast(106%);
+      /* Multi-layer specular rim & depth shadow */
+      box-shadow:
+        0 24px 54px -10px rgba(0, 0, 0, 0.62),
+        0 4px 16px rgba(0, 0, 0, 0.32),
+        inset 0 1px 0.5px rgba(255, 255, 255, 0.48),
+        inset 0 -1px 0.5px rgba(255, 255, 255, 0.12),
+        inset 0 0 18px rgba(255, 255, 255, 0.05);
+      border: 0.5px solid rgba(255, 255, 255, 0.24);
+      overflow: hidden;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, sans-serif;
+      color: #f8fafc;
+      -webkit-font-smoothing: antialiased;
+    }
+    /* Diagonal optical caustic reflection */
+    #liquid-glass-zip-hud .lg-caustic {
+      position: absolute;
+      top: 0; bottom: 0; left: 0;
+      width: 38%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.18), transparent);
+      animation: lgGlassSweep 4.2s infinite cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+    }
+    /* Precision SVG Circular Glass Gauge */
+    #liquid-glass-zip-hud .lg-ring-wrap {
+      position: relative;
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.45), 0 1px 0 rgba(255, 255, 255, 0.18);
+    }
+    #liquid-glass-zip-hud .lg-ring-glow {
+      position: absolute;
+      inset: -3px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(226, 232, 240, 0.25), transparent 70%);
+      animation: lgAmbientPulse 2.4s infinite ease-in-out;
+      pointer-events: none;
+    }
+    #liquid-glass-zip-hud svg.lg-svg {
+      width: 38px;
+      height: 38px;
+      transform: rotate(-90deg);
+      overflow: visible;
+    }
+    #liquid-glass-zip-hud circle.lg-track {
+      fill: none;
+      stroke: rgba(255, 255, 255, 0.12);
+      stroke-width: 2.5;
+    }
+    #liquid-glass-zip-hud circle.lg-arc {
+      fill: none;
+      stroke: url(#lg-grad);
+      stroke-width: 2.6;
+      stroke-linecap: round;
+      stroke-dasharray: 94.25;
+      stroke-dashoffset: 92;
+      filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.45));
+      transition: stroke-dashoffset 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #liquid-glass-zip-hud .lg-pct-mini {
+      position: absolute;
+      font-size: 9.5px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: rgba(255, 255, 255, 0.92);
+      font-variant-numeric: tabular-nums;
+    }
+    #liquid-glass-zip-hud .lg-meta {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      position: relative;
+      z-index: 2;
+    }
+    #liquid-glass-zip-hud .lg-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    #liquid-glass-zip-hud .lg-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: rgba(255, 255, 255, 0.96);
+      white-space: nowrap;
+    }
+    #liquid-glass-zip-hud .lg-size-pill {
+      font-size: 11px;
+      font-weight: 500;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 0.5px solid rgba(255, 255, 255, 0.16);
+      color: rgba(226, 232, 240, 0.9);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    #liquid-glass-zip-hud .lg-sub {
+      font-size: 11.5px;
+      font-weight: 400;
+      color: rgba(203, 213, 225, 0.68);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: -0.005em;
+    }
+  </style></head>
+	<body data-sveltekit-preload-data="hover" style="cursor: none;">
+		<div style="display: contents">  <div id="main" tabindex="-1" autofocus="" class="svelte-bgj4yc"><div id="ui-dynamic" class="svelte-bgj4yc">     <div id="ui-settings-bar" class="svelte-1vatkls"> <div class="audio-control svelte-1hs4ew6"><img class="ui-settings-bar-icon" src="/img/ico_volume_on.svg"> </div> <img class="ui-settings-bar-icon svelte-1vatkls" src="/img/ico_settings.svg"></div>    <div> <div class="conf-main svelte-101otrq"><div class="conf-header svelte-101otrq"><div class="conf-tab-header svelte-101otrq"><div class="conf-tab-header-label svelte-101otrq" style="opacity: 1;"><span class="svelte-101otrq invisible">-</span> WORLD <span class="svelte-101otrq invisible">-</span></div> <div class="conf-tab-pip svelte-101otrq"></div></div> <div class="conf-tab-header svelte-101otrq"><div class="conf-tab-header-label svelte-101otrq" style="opacity: 1;"><span class="svelte-101otrq invisible">-</span> STYLE <span class="svelte-101otrq invisible">-</span></div> <div class="conf-tab-pip svelte-101otrq"></div></div> <div class="conf-tab-header svelte-101otrq"><div class="conf-tab-header-label svelte-101otrq" style="opacity: 1;"><span class="svelte-101otrq invisible">-</span> VEHICLE <span class="svelte-101otrq invisible">-</span></div> <div class="conf-tab-pip svelte-101otrq"></div></div></div> <div class="conf-body svelte-101otrq"><div class="wld-main svelte-101otrq"><div class="wld-options svelte-101otrq"><div class="wld-option svelte-101otrq"><div class="wld-option-label svelte-101otrq">LOCATION</div> <div class="wld-option-tile svelte-101otrq"><div class="wld-option-arrows svelte-101otrq"><div class="wld-option-arrow svelte-101otrq" style="text-align: left;">◂</div> <div class="wld-option-arrow svelte-101otrq" style="text-align: right;">▸</div></div> HILLS</div></div> <div class="wld-option svelte-101otrq"><div class="wld-option-label svelte-101otrq">ROAD STYLE</div> <div class="wld-option-tile svelte-101otrq"><div class="wld-option-arrows svelte-101otrq"><div class="wld-option-arrow svelte-101otrq" style="text-align: left;">◂</div> <div class="wld-option-arrow svelte-101otrq" style="text-align: right;">▸</div></div> NORMAL</div></div> </div> <div class="wld-generate svelte-101otrq"><div class="wld-hash-box svelte-101otrq"></div> <div class="ui-btn">GENERATE</div></div></div></div></div></div>   <div class="touch-visible svelte-if0uoq"><div class="accel-slider svelte-if0uoq"><div class="slider-thumb svelte-if0uoq" style="top: 90%;"></div> <div class="accel-slider-track svelte-if0uoq"></div> <div class="accel-slider-zero svelte-if0uoq" style="top: 90%;"></div></div> <div class="steer svelte-if0uoq"><div class="steer-bar svelte-if0uoq"><div class="steer-thumb-container svelte-if0uoq"><div class="steer-thumb svelte-if0uoq"></div></div> <div class="steer-bar-zero svelte-if0uoq"></div></div></div> <div class="touch-btn touch-reset svelte-if0uoq">RESET</div> <div class="touch-btn touch-brake svelte-if0uoq">BRAKE</div> <div class="touch-btn touch-boost svelte-if0uoq">BOOST</div> <div class="touch-btn touch-cam svelte-if0uoq">CAM</div></div> <div class="dash-icons svelte-bgj4yc dash-icons-bottom dash-icons-top"> </div> <div id="upcoming-container" class="svelte-1wl5x4o upcoming-top" style="opacity: 1;"><svg viewBox="0 0 160 160" width="100%" height="100%"><g transform="translate(80 96) scale(-0.5 -0.5)"><polyline points="49.994183 9000.464 50.619133 9000.458 51.244083 9000.451 51.869034 9000.444 52.49398 9000.4375 53.11893 9000.431 53.74388 9000.425 54.36883 9000.418 54.99378 9000.411 55.61873 9000.404 56.24368 9000.397 56.86863 9000.391 57.493576 9000.385 58.118526 9000.378 58.743477 9000.371 59.368427 9000.364 59.993374 9000.357 60.618324 9000.351 61.243275 9000.343 61.868225 9000.336 62.49318 9000.328 63.11813 9000.32 63.74308 9000.313 64.36803 9000.306 64.99298 9000.299 65.61793 9000.291 66.24288 9000.284 66.86783 9000.276 67.49278 9000.27 68.11773 9000.262 68.74268 9000.254 69.36763 9000.247 69.992584 9000.239 70.61752 9000.238 71.24246 9000.238 71.8674 9000.237 72.49234 9000.236 73.11728 9000.235 73.74222 9000.234 74.36715 9000.234 74.99209 9000.233 75.61703 9000.232 76.24197 9000.231 76.866905 9000.23 77.491844 9000.2295 78.11678 9000.2295 78.74172 9000.229 79.36666 9000.228 79.9916 9000.227 80.61511 9000.255 81.23862 9000.283 81.86213 9000.312 82.48564 9000.34 83.109146 9000.368 83.73266 9000.396 84.35617 9000.425 84.979675 9000.453 85.60319 9000.48 86.2267 9000.509 86.850204 9000.537 87.47372 9000.565 88.09722 9000.594 88.72073 9000.622 89.344246 9000.65 89.96775 9000.679 90.58617 9000.755 91.20458 9000.831 91.823 9000.908 92.441414 9000.984 93.05983 9001.061 93.678246 9001.137 94.29666 9001.213 94.91508 9001.29 95.53349 9001.366 96.15191 9001.442 96.77032 9001.519 97.38873 9001.596 98.00715 9001.672 98.625565 9001.748 99.24398 9001.824 99.8624 9001.9 100.47228 9002.027 101.08216 9002.153 101.69204 9002.279 102.301926 9002.405 102.911804 9002.532 103.52169 9002.658 104.13157 9002.784 104.741455 9002.91 105.35133 9003.037 105.96122 9003.163 106.5711 9003.289 107.18098 9003.415 107.79086 9003.542 108.40074 9003.668 109.01063 9003.794 109.62051 9003.92 110.2205 9004.089 110.82049 9004.257 111.42048 9004.425 112.02047 9004.594 112.62046 9004.762 113.22045 9004.93 113.82044 9005.098 114.42043 9005.267 115.020424 9005.435 115.620415 9005.603 116.220406 9005.771 116.8204 9005.939 117.42039 9006.107 118.02038 9006.276 118.62036 9006.444 119.22035 9006.612 119.81165 9006.812 120.40295 9007.01 120.99425 9007.209 121.58554 9007.407 122.17684 9007.605 122.768135 9007.805 123.35943 9008.003 123.95073 9008.202 124.54202 9008.4 125.13332 9008.6 125.72462 9008.798 126.31592 9008.997 126.90721 9009.195 127.49851 9009.394 128.0898 9009.593 128.6811 9009.791 129.26717 9010.007 129.85323 9010.223 130.43929 9010.4375 131.02534 9010.653 131.6114 9010.868 132.19746 9011.084 132.78352 9011.299 133.36958 9011.515 133.95564 9011.73 134.5417 9011.945 135.12776 9012.161 135.71382 9012.376 136.29987 9012.592 136.88593 9012.808 137.47198 9013.022 138.05804 9013.238 138.64244 9013.459 139.22682 9013.68 139.8112 9013.9 140.3956 9014.122 140.97998 9014.343 141.56436 9014.563 142.14876 9014.784 142.73314 9015.006 143.31752 9015.227 143.90192 9015.447 144.4863 9015.668 145.07068 9015.89 145.65506 9016.11 146.23946 9016.331 146.82384 9016.552 147.40822 9016.772 147.99294 9016.993 148.57764 9017.214 149.16234 9017.435 149.74706 9017.655 150.33176 9017.875 150.91647 9018.096 151.50117 9018.316 152.08588 9018.537 152.6706 9018.758 153.2553 9018.979 153.84 9019.198 154.42471 9019.419 155.00941 9019.64 155.59412 9019.86 156.17883 9020.081 156.76353 9020.301 157.34955 9020.519 157.93555 9020.735 158.52156 9020.952 159.10757 9021.17 159.69357 9021.387 160.27959 9021.6045 160.8656 9021.821 161.4516 9022.038 162.03761 9022.256 162.62363 9022.473 163.20963 9022.689 163.79564 9022.907 164.38165 9023.124 164.96765 9023.342 165.55367 9023.559 166.13968 9023.775 166.73259 9023.972 167.3255 9024.167 167.91841 9024.363 168.51132 9024.56 169.10423 9024.755 169.69714 9024.951 170.29005 9025.146 170.88297 9025.343 171.47588 9025.538 172.06879 9025.734 172.66171 9025.93 173.25462 9026.126 173.84753 9026.321 174.44044 9026.518 175.03336 9026.713 175.62627 9026.909 176.23213 9027.024 176.83801 9027.14 177.4439 9027.254 178.04976 9027.369 178.65564 9027.484 179.2615 9027.6 179.86739 9027.715 180.47327 9027.83 181.07913 9027.944 181.68501 9028.06 182.29088 9028.175 182.89676 9028.29 183.50262 9028.405 184.1085 9028.5205 184.71439 9028.635 185.32025 9028.75 185.93565 9028.751 186.55107 9028.751 187.16647 9028.752 187.78188 9028.753 188.39728 9028.753 189.0127 9028.754 189.6281 9028.754 190.2435 9028.755 190.8589 9028.756 191.47432 9028.756 192.08972 9028.757 192.70512 9028.757 193.32053 9028.758 193.93594 9028.758 194.55135 9028.759 195.16675 9028.76 195.78064 9028.667 196.39453 9028.575 197.00842 9028.483 197.62231 9028.391 198.2362 9028.299 198.8501 9028.206 199.46399 9028.114 200.07788 9028.022 200.69177 9027.93 201.30566 9027.838 201.91956 9027.746 202.53345 9027.653 203.14734 9027.562 203.76123 9027.47 204.37512 9027.377" transform="rotate(90.37073806985406) translate(-49.994183457690006 -9000.464352514759)" stroke="var(--sr-white)" stroke-width="10" stroke-linecap="round" fill="none" style="filter: drop-shadow( 0px 0px 6px var(--sr-white) );"></polyline><circle fill="var(--sr-primary)" r="2" cx="49.994183457690006" cy="9000.464352514759" transform="rotate(90.37073806985406) translate(-49.994183457690006 -9000.464352514759)"></circle></g></svg></div> <div id="dash-autodrive" class="svelte-itei5"> <div class="dash-autodrive-bracket svelte-itei5" style="border-right: medium;"></div> <div class="dash-autodrive-text svelte-itei5">AUTODRIVE</div> <div class="dash-autodrive-bracket svelte-itei5" style="border-left: medium;"></div> </div> <div class="stat speed svelte-bgj4yc speed-touch stat-bottom stat-top"> <div class="stat-value svelte-bgj4yc"> 0.0</div> <div class="stat-unit svelte-bgj4yc">KILOMETERS PER HOUR</div></div> <div class="stat distance svelte-bgj4yc distance-touch stat-bottom stat-top"><div class="stat-value svelte-bgj4yc">0.1</div> <div class="stat-unit svelte-bgj4yc">KILOMETERS</div></div> <div class="stat-underlay svelte-bgj4yc underlay-top"></div> <div class="menu-underlay svelte-bgj4yc"></div></div> <canvas class="svelte-bgj4yc" data-engine="three.js r155" width="1180" height="655" style="width: 1180px; height: 655px;"></canvas></div> <div id="svelte-announcer" aria-live="assertive" aria-atomic="true" style="position: absolute; left: 0px; top: 0px; clip: rect(0px, 0px, 0px, 0px); clip-path: inset(50%); overflow: hidden; white-space: nowrap; width: 1px; height: 1px;"></div></div>
+	
+<div style="position: fixed; top: 0px; left: 282px; cursor: pointer; opacity: 0.9; z-index: 9999; display: none;"><canvas width="160" height="96" style="width: 80px; height: 48px; display: block;"></canvas><canvas width="160" height="96" style="width: 80px; height: 48px; display: none;"></canvas></div></body><div id="liquid-glass-zip-hud" style="position: fixed; bottom: 32px; left: 50%; transform: translate3d(-50%, 28px, 0px) scale(0.94); z-index: 2147483647; pointer-events: none; opacity: 0; will-change: transform, opacity; transition: opacity 0.55s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.22, 1.25, 0.36, 1);"><div class="lg-shell"><div class="lg-caustic"></div><div class="lg-ring-wrap"><div class="lg-ring-glow" id="lg-glow"></div><svg class="lg-svg" viewBox="0 0 36 36"><defs><linearGradient id="lg-grad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ffffff"></stop><stop offset="55%" stop-color="#cbd5e1"></stop><stop offset="100%" stop-color="#94a3b8"></stop></linearGradient></defs><circle class="lg-track" cx="18" cy="18" r="15"></circle><circle class="lg-arc" id="lg-arc" cx="18" cy="18" r="15"></circle></svg><span class="lg-pct-mini" id="lg-pct">0%</span></div><div class="lg-meta"><div class="lg-top-row"><span class="lg-title" id="lg-title">Indexing Assets</span><span class="lg-size-pill" id="lg-size">0.0 MB</span></div><div class="lg-sub" id="lg-file">Scanning DOM &amp; 3D resources…</div></div></div></div></html>
